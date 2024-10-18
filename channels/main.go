@@ -42,3 +42,25 @@ func checkLink(link string, c chan string) {
 	fmt.Println(link, "is up")
 	c <- link
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"sync"
+// )
+
+// func main() {
+// 	greeting := "Hi There!"
+
+// 	var w sync.WaitGroup
+
+// 	w.Add(1)
+
+// 	go (func() {
+// 		fmt.Println(greeting)
+// 		defer w.Done()
+
+// 	})()
+// 	w.Wait()
+// }
