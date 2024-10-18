@@ -24,15 +24,14 @@ func main() {
 
 	for l := range c {
 		// go checkLink(l, c)
-		go func() {
+		go func(link string) {
 			time.Sleep(5 * time.Second)
-			checkLink(l, c)
-		}()
+			checkLink(link, c)
+		}(l)
 	}
 }
 
 func checkLink(link string, c chan string) {
-	time.Sleep(5 * time.Second)
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Println(link, "might be down!")
@@ -41,5 +40,5 @@ func checkLink(link string, c chan string) {
 	}
 
 	fmt.Println(link, "is up")
-	c <- "Yep its up"
+	c <- link
 }
