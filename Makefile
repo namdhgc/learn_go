@@ -16,4 +16,7 @@ migratedown:
 redis:
 	docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
 
-.PHONY: postgres createdb dropdb migrateup migratedown
+mysql:
+	docker run --name mysql -e MYSQL_ROOT_PASSWORD=1 -p 3306:3306 -d mysql
+
+.PHONY: postgres createdb dropdb migrateup migratedown mysql
